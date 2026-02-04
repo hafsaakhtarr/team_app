@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
               // 👉 Replace the button text with an action label (example: 'Show Info').
               child: Text('Learn More'),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 12),
             //FEATURE 1 : Add a Card widget to display student info
             Card(
                 elevation: 4,
@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-            SizedBox(height: 20),
+            SizedBox(height: 12),
             // FEATURE 2: Switching themes
             Card(
                 elevation: 2,
@@ -179,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               //Feature 3: Motivational Quote Display
-              SizedBox(height: 20),
+              SizedBox(height: 12),
               Card(
                 elevation: 2,
                 margin: EdgeInsets.all(16),
@@ -208,6 +208,66 @@ class _HomePageState extends State<HomePage> {
                       ElevatedButton(
                         onPressed: _nextQuote,
                         child: Text('Next Quote'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            SizedBox(height: 12),
+            Card(
+                elevation: 2,
+                margin: EdgeInsets.all(16),
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Interests & Hobbies',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 16),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            children: [
+                              Icon(Icons.code, size: 40, color: Colors.blue),
+                              SizedBox(height: 8),
+                              Text('Coding'),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Icon(Icons.cloud, size: 40, color: Colors.blue),
+                              SizedBox(height: 8),
+                              Text('Cloud'),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Icon(Icons.security, size: 40, color: Colors.blue),
+                              SizedBox(height: 8),
+                              Text('Security'),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Icon(Icons.music_note, size: 40, color: Colors.blue),
+                              SizedBox(height: 8),
+                              Text('Music'),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Icon(Icons.psychology, size: 40, color: Colors.blue),
+                              SizedBox(height: 8),
+                              Text('AI/ML'),
+                            ],
+                          ),
+                        ],
                       ),
                     ],
                   ),
