@@ -662,12 +662,36 @@ class AdvancedComponentsPage extends StatelessWidget {
               SizedBox(height: 20),
 
               // ========== FEATURE 11: CUSTOM WIDGET ==========
-              //CustomWidget(),
+              CustomWidget(),
 
               SizedBox(height: 20),
-            ],
+                   ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.info),
+            label: 'About',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+        onTap: (index) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Tapped: ${['Home', 'About', 'Settings'][index]}'),
+              duration: Duration(seconds: 1),
+            ),
+          );
+        },
       ),
     );
   }
@@ -754,6 +778,63 @@ class SnackbarNotifications extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+//Feature 10: custom widget and bottom navigation
+class CustomWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 2,
+      margin: EdgeInsets.all(16),
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Text(
+              'Custom Widget',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 16),
+            CustomStyledButton(
+              label: 'Custom Button',
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Custom button pressed!')),
+                );
+                
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CustomStyledButton extends StatelessWidget {
+  final String label;
+  final VoidCallback onPressed;
+
+  const CustomStyledButton({
+    required this.label,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.deepPurple,
+        foregroundColor: Colors.white,
+        padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+      ),
+      child: Text(label),
     );
   }
 }
