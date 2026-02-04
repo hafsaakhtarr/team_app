@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         // TASK 3: Change the text in the top bar
         // 👉 Replace the AppBar title text with your team name or app name.
-        title: Text('Welcome to Class'),
+        title: Text('Team_APP Challenge'),
       ),
       body: Center(
         child: Column(
@@ -47,14 +47,14 @@ class HomePage extends StatelessWidget {
             // TASK 4: Change the main text below
             // 👉 Update this main headline to describe your app.
             Text(
-              'Hello, Flutter!',
+              'An app on student hobbies',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 20), // Adds space between widgets
             // TASK 5: Change the subtitle text
             // 👉 Update this smaller subtitle with a brief description.
             Text(
-              'This is my first modification.',
+              'Exploring different ways to learn and grow as a student.',
               style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
             SizedBox(height: 20),
@@ -65,7 +65,7 @@ class HomePage extends StatelessWidget {
               },
               // TASK 6: Change the text on the button
               // 👉 Replace the button text with an action label (example: 'Show Info').
-              child: Text('Click Me'),
+              child: Text('Learn More'),
             ),
             // TASK 7: Add a new Text widget below (after this comment)
             // 👉 Add a new Text widget here. Example:
