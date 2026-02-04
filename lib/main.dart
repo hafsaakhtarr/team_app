@@ -325,7 +325,7 @@ class InteractiveFeaturesPage extends StatelessWidget {
               SizedBox(height: 16),
 
               // ========== FEATURE 7: TEXT INPUT FIELD ==========
-              //TextInputWidget(),
+              TextInputWidget(),
 
               SizedBox(height: 16),
 
@@ -438,6 +438,88 @@ class _ImageDisplayState extends State<ImageDisplay> {
               'Loaded from Internet',
               style: TextStyle(fontSize: 12, color: Colors.grey),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+class TextInputWidget extends StatefulWidget {
+  @override
+  _TextInputWidgetState createState() => _TextInputWidgetState();
+}
+
+class _TextInputWidgetState extends State<TextInputWidget> {
+  late TextEditingController _controller;
+  String _displayedText = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4,
+      margin: EdgeInsets.all(16),
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Text(
+              'Text Input Field',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 12),
+            TextField(
+              controller: _controller,
+              decoration: InputDecoration(
+                hintText: 'Enter your text here',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.edit),
+              ),
+            ),
+            SizedBox(height: 12),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _displayedText = _controller.text;
+                });
+              },
+              child: Text('Submit'),
+            ),
+            SizedBox(height: 12),
+            if (_displayedText.isNotEmpty)
+              Column(
+                children: [
+                  Text(
+                    'You entered:',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    _displayedText,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
           ],
         ),
       ),
