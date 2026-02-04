@@ -330,7 +330,7 @@ class InteractiveFeaturesPage extends StatelessWidget {
               SizedBox(height: 16),
 
               // ========== FEATURE 8: TOGGLE SWITCH ==========
-              //ToggleSwitchWidget(),
+              ToggleSwitchWidget(),
 
               SizedBox(height: 20),
             ],
@@ -444,6 +444,7 @@ class _ImageDisplayState extends State<ImageDisplay> {
     );
   }
 }
+//FEATURE 7: TEXT INPUT FIELD
 class TextInputWidget extends StatefulWidget {
   @override
   _TextInputWidgetState createState() => _TextInputWidgetState();
@@ -519,6 +520,94 @@ class _TextInputWidgetState extends State<TextInputWidget> {
                     ),
                   ),
                 ],
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+//FEATURE 8: TOGGLE SWITCH
+class ToggleSwitchWidget extends StatefulWidget {
+  @override
+  _ToggleSwitchWidgetState createState() => _ToggleSwitchWidgetState();
+}
+
+class _ToggleSwitchWidgetState extends State<ToggleSwitchWidget> {
+  bool _isToggled = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4,
+      margin: EdgeInsets.all(16),
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Text(
+              'Toggle Switch',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Show Details',
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(width: 12),
+                Switch(
+                  value: _isToggled,
+                  onChanged: (value) {
+                    setState(() {
+                      _isToggled = value;
+                    });
+                  },
+                ),
+              ],
+            ),
+            SizedBox(height: 16),
+            if (_isToggled)
+              Container(
+                padding: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.blue[50],
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: Colors.blue),
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      'Additional Content',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      'This content is hidden when the toggle is off.',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey[700],
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            else
+              Text(
+                'Toggle is OFF - content hidden',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey,
+                  fontStyle: FontStyle.italic,
+                ),
               ),
           ],
         ),
