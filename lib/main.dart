@@ -657,7 +657,7 @@ class AdvancedComponentsPage extends StatelessWidget {
               SizedBox(height: 20),
 
               // ========== FEATURE 10: SNACKBAR NOTIFICATIONS ==========
-              //SnackbarNotifications(),
+              SnackbarNotifications(),
 
               SizedBox(height: 20),
 
@@ -714,6 +714,42 @@ class ScrollableList extends StatelessWidget {
                   );
                 },
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+//Feature 10: Snackbar Notifications
+class SnackbarNotifications extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 2,
+      margin: EdgeInsets.all(16),
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Text(
+              'Snackbar Notifications',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Notification sent!'),
+                    duration: Duration(seconds: 2),
+                  ),
+                );
+              },
+              child: Text('Show Message'),
             ),
           ],
         ),
