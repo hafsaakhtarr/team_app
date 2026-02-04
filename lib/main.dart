@@ -77,14 +77,14 @@ class _HomePageState extends State<HomePage> {
               'An app on student hobbies',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 20), // Adds space between widgets
+            SizedBox(height: 5), // Adds space between widgets
             // TASK 5: Change the subtitle text
             // 👉 Update this smaller subtitle with a brief description.
             Text(
               'Exploring different ways to learn and grow as a student.',
               style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 5),
             ElevatedButton(
               // TIP: onPressed runs when the button is tapped.
               onPressed: () {
@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
               // 👉 Replace the button text with an action label (example: 'Show Info').
               child: Text('Learn More'),
             ),
-            SizedBox(height: 12),
+            SizedBox(height: 9),
             //FEATURE 1 : Add a Card widget to display student info
             Card(
                 elevation: 4,
@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-            SizedBox(height: 12),
+            SizedBox(height: 9),
             // FEATURE 2: Switching themes
             Card(
                 elevation: 2,
@@ -179,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               //Feature 3: Motivational Quote Display
-              SizedBox(height: 12),
+              SizedBox(height: 9),
               Card(
                 elevation: 2,
                 margin: EdgeInsets.all(16),
@@ -213,7 +213,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-            SizedBox(height: 12),
+            SizedBox(height: 9),
             Card(
                 elevation: 2,
                 margin: EdgeInsets.all(16),
@@ -228,42 +228,42 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 16),
+                      SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Column(
                             children: [
                               Icon(Icons.code, size: 40, color: Colors.blue),
-                              SizedBox(height: 8),
+                              SizedBox(height: 6),
                               Text('Coding'),
                             ],
                           ),
                           Column(
                             children: [
                               Icon(Icons.cloud, size: 40, color: Colors.blue),
-                              SizedBox(height: 8),
+                              SizedBox(height: 6),
                               Text('Cloud'),
                             ],
                           ),
                           Column(
                             children: [
                               Icon(Icons.security, size: 40, color: Colors.blue),
-                              SizedBox(height: 8),
+                              SizedBox(height: 6),
                               Text('Security'),
                             ],
                           ),
                           Column(
                             children: [
                               Icon(Icons.music_note, size: 40, color: Colors.blue),
-                              SizedBox(height: 8),
+                              SizedBox(height: 6),
                               Text('Music'),
                             ],
                           ),
                           Column(
                             children: [
                               Icon(Icons.psychology, size: 40, color: Colors.blue),
-                              SizedBox(height: 8),
+                              SizedBox(height: 6),
                               Text('AI/ML'),
                             ],
                           ),
@@ -277,20 +277,121 @@ class _HomePageState extends State<HomePage> {
 
             // TASK 7: Add a new Text widget below (after this comment)
             // 👉 Add a new Text widget here. Example:
-            // Text('Created by: [Your Name]')
-            // Tip: Use a smaller font or italic style for a signature line.
-            // Example with styling:
-            // Text(
-            //   'Created by: [Your Name]",
-            //   style: TextStyle(fontSize: 12, fontStyle: FontStyle.italic, color: Colors.grey),
-            // ),
-          ],
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => InteractiveFeaturesPage(),
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                  foregroundColor: Colors.white,
+                ),
+                child: Text('Interactive Features'),
+              ),
+
+              SizedBox(height: 12),
+            ],
+          ),
+        ),
+      );
+  }
+}
+class InteractiveFeaturesPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Interactive Features'),
+      ),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(height: 20),
+
+              // ========== FEATURE 5: COUNTER WIDGET ==========
+              CounterWidget(),
+
+              SizedBox(height: 16),
+
+              // ========== FEATURE 6: IMAGE DISPLAY ==========
+              //ImageDisplay(),
+
+              SizedBox(height: 16),
+
+              // ========== FEATURE 7: TEXT INPUT FIELD ==========
+              //TextInputWidget(),
+
+              SizedBox(height: 16),
+
+              // ========== FEATURE 8: TOGGLE SWITCH ==========
+              //ToggleSwitchWidget(),
+
+              SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
+//FEATURE 5: COUNTER WIDGET 
+class CounterWidget extends StatefulWidget {
+  @override
+  _CounterWidgetState createState() => _CounterWidgetState();
+}
+
+class _CounterWidgetState extends State<CounterWidget> {
+  int _count = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4,
+      margin: EdgeInsets.all(16),
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Text(
+              'Counter Widget',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Count: $_count',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () => setState(() => _count--),
+                  child: Icon(Icons.remove),
+                ),
+                SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: () => setState(() => _count++),
+                  child: Icon(Icons.add),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 // TASK 8: Modify the ElevatedButton above to add custom styling
 // Add this inside the ElevatedButton (after child parameter):
 // style: ElevatedButton.styleFrom(
