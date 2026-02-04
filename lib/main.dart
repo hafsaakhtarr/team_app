@@ -190,11 +190,11 @@ class _HomePageState extends State<HomePage> {
                       Text(
                         'Daily Motivation',
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 12,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 12),
+                      SizedBox(height: 9),
                       Text(
                         _motivationalQuotes[_currentQuoteIndex],
                         textAlign: TextAlign.center,
@@ -204,7 +204,7 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.grey[700],
                         ),
                       ),
-                      SizedBox(height: 12),
+                      SizedBox(height: 9),
                       ElevatedButton(
                         onPressed: _nextQuote,
                         child: Text('Next Quote'),
@@ -277,23 +277,44 @@ class _HomePageState extends State<HomePage> {
 
             // TASK 7: Add a new Text widget below (after this comment)
             // 👉 Add a new Text widget here. Example:
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => InteractiveFeaturesPage(),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => InteractiveFeaturesPage(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      foregroundColor: Colors.white,
                     ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  foregroundColor: Colors.white,
-                ),
-                child: Text('Interactive Features'),
+                    child: Text('Interactive Features'),
+                  ),
+                  SizedBox(width: 12),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AdvancedComponentsPage(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.purple,
+                      foregroundColor: Colors.white,
+                    ),
+                    child: Text('Advanced Components'),
+                          ),
+                ],
               ),
 
-              SizedBox(height: 12),
+              // TASK 7: Signature line
             ],
           ),
         ),
@@ -609,6 +630,91 @@ class _ToggleSwitchWidgetState extends State<ToggleSwitchWidget> {
                   fontStyle: FontStyle.italic,
                 ),
               ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AdvancedComponentsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Advanced Components'),
+      ),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(height: 20),
+
+              // ========== FEATURE 9: SCROLLABLE LIST ==========
+              ScrollableList(),
+
+              SizedBox(height: 20),
+
+              // ========== FEATURE 10: SNACKBAR NOTIFICATIONS ==========
+              //SnackbarNotifications(),
+
+              SizedBox(height: 20),
+
+              // ========== FEATURE 11: CUSTOM WIDGET ==========
+              //CustomWidget(),
+
+              SizedBox(height: 20),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+//Feature 9 : Scrollable list
+class ScrollableList extends StatelessWidget {
+  final List<String> _movies = [
+    'Movie 1',
+    'Movie 2',
+    'Movie 3',
+    'Movie 4',
+    'Movie 5',
+    'Movie 6',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 2,
+      margin: EdgeInsets.all(16),
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Text(
+              'Scrollable List',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 12),
+            Container(
+              height: 200,
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: _movies.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    leading: Icon(Icons.star, color: Colors.amber),
+                    title: Text('Item ${index + 1}'),
+                    subtitle: Text('Description for item ${index + 1}'),
+                    trailing: Icon(Icons.arrow_forward_ios),
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
