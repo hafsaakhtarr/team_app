@@ -320,7 +320,7 @@ class InteractiveFeaturesPage extends StatelessWidget {
               SizedBox(height: 16),
 
               // ========== FEATURE 6: IMAGE DISPLAY ==========
-              //ImageDisplay(),
+              ImageDisplay(),
 
               SizedBox(height: 16),
 
@@ -392,18 +392,55 @@ class _CounterWidgetState extends State<CounterWidget> {
     );
   }
 }
-// TASK 8: Modify the ElevatedButton above to add custom styling
-// Add this inside the ElevatedButton (after child parameter):
-// style: ElevatedButton.styleFrom(
-//   backgroundColor: Colors.green,
-// ),
-// 👉 Example full snippet:
-// ElevatedButton(
-//   onPressed: () {},
-//   child: Text('Click Me'),
-//   style: ElevatedButton.styleFrom(
-//     backgroundColor: Colors.green,
-//     foregroundColor: Colors.white,
-//   ),
-// ),
-// TIP: Keep the button inside the Column so it shows in the center.
+//FEATURE 6: IMAGE DISPLAY
+class ImageDisplay extends StatefulWidget {
+  @override
+  _ImageDisplayState createState() => _ImageDisplayState();
+}
+
+class _ImageDisplayState extends State<ImageDisplay> {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4,
+      margin: EdgeInsets.all(16),
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Text(
+              'Image Display',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 12),
+            Container(
+              width: 200,
+              height: 200,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.blue, width: 2),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Image.network(
+                'https://www.nami.org/wp-content/uploads/2025/08/biking-blog.jpeg',
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Center(
+                    child: Text('Image not loaded'),
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 12),
+            Text(
+              'Loaded from Internet',
+              style: TextStyle(fontSize: 12, color: Colors.grey),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
