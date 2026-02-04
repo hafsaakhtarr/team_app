@@ -28,7 +28,34 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+class _HomePageState extends State<HomePage> {
+  int _currentThemeIndex = 0;
+  final List<MaterialColor> _themeColors = [
+    Colors.blue,
+    Colors.purple,
+    Colors.teal,
+  ];
+
+  // FEATURE 3: Motivational Quotes List
+  final List<String> _motivationalQuotes = [
+    "The only way to do great work is to love what you do. - Steve Jobs",
+    "Innovation distinguishes between a leader and a follower. - Steve Jobs",
+    "Life is what happens when you're busy making other plans. - John Lennon",
+    "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+    "It is during our darkest moments that we must focus to see the light. - Aristotle",
+  ];
+    int _currentQuoteIndex = 0;
+
+  void _nextQuote() {
+    setState(() {
+      _currentQuoteIndex = (_currentQuoteIndex + 1) % _motivationalQuotes.length;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +95,8 @@ class HomePage extends StatelessWidget {
               child: Text('Learn More'),
             ),
             SizedBox(height: 20),
-             Card(
+            //FEATURE 1 : Add a Card widget to display student info
+            Card(
                 elevation: 4,
                 margin: EdgeInsets.all(16),
                 child: Padding(
@@ -95,6 +123,91 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                         ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            SizedBox(height: 20),
+            // FEATURE 2: Switching themes
+            Card(
+                elevation: 2,
+                margin: EdgeInsets.all(16),
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Theme Customization',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 12),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                _currentThemeIndex = 0;
+                              });
+                            },
+                            child: Text('Blue'),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                _currentThemeIndex = 1;
+                              });
+                            },
+                            child: Text('Purple'),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                _currentThemeIndex = 2;
+                              });
+                            },
+                            child: Text('Teal'),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              //Feature 3: Motivational Quote Display
+              SizedBox(height: 20),
+              Card(
+                elevation: 2,
+                margin: EdgeInsets.all(16),
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Daily Motivation',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 12),
+                      Text(
+                        _motivationalQuotes[_currentQuoteIndex],
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontStyle: FontStyle.italic,
+                          color: Colors.grey[700],
+                        ),
+                      ),
+                      SizedBox(height: 12),
+                      ElevatedButton(
+                        onPressed: _nextQuote,
+                        child: Text('Next Quote'),
                       ),
                     ],
                   ),
